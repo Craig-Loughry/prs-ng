@@ -1,0 +1,33 @@
+<app-menu></app-menu>
+ <div class= 'component-content'>
+  <div class= 'lefthalf'>
+  <span class='component-title'> [{{title}}] </span>
+  <span><a routerLink='/user/create'>
+    <img id='createnew' width='20' height='20' src='assets/add-icon.png' title='Add New'></a></span>
+    </div>
+</div>
+  <p *ngIf='!users'> Loading....</p>
+   <table class="table table-striped table-lg" *ngIf='users'>
+    <tr style="font-weight:bold">
+    <td>Id</td>
+    <td>Username</td>
+        <td>Password</td> 
+    <td>First Name</td>
+    <td>Last Name</td>
+    <td>Phone Number</td>
+    <td>Email</td>
+    <td>Reviewer</td>
+    <td>Admin</td>
+    <td>Action</td>
+    </tr>
+    <tr *ngFor= "let u of users">
+    <td>{{u.Id}}</td><td>{{u.UserName}}</td><td>{{u.Password}}</td><td>{{u.FirstName}}</td>
+    <td>{{u.LastName}}</td><td>{{u.PhoneNumber}}</td><td>{{u.Email}}</td><td>{{u.Reviewer?"Rvw":""}}</td>
+    <td>{{u.Admin?"Adm":""}}</td>
+    <td class="actions">
+        <a routerLink='/user/detail/{{u.Id}}'><img src='assets/details.png' width='20' height='20' title='Detail'></a>
+        <a routerLink='/user/edit/{{u.Id}}'><img src='assets/pencil-icon.png' width='20' height='20' title='Edit'></a>
+    </td>
+    </tr>
+</table>
+<p *ngIf='!users'> Loading....</p>
