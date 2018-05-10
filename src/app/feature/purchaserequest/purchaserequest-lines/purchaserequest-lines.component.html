@@ -1,0 +1,51 @@
+<app-menu></app-menu>
+<div class='component-content'>
+  <div>
+    <span class='component-title'>[{{title}}]</span>
+    <span><a routerLink='/purchaserequest/list'>Back to list</a></span>
+  </div>
+  <p *ngIf='!purchaserequest'>Loading ...</p>
+  <div *ngIf='purchaserequest'>
+    <table class='table table-sm'>
+        <tr>
+            <th>ID:</th>
+            <th>Description:</th>
+            <th>Status:</th>
+            <th>Total:</th>
+        </tr>
+        <tr>
+            <td>{{purchaserequest.Id}}</td>
+            <td>{{purchaserequest.Description}}</td>
+            <td>{{purchaserequest.Status}}</td>
+            <td>{{purchaserequest.Total}}</td>
+        </tr>
+    </table>
+    <p></p>
+    <table *ngIf='lines' class="table table-sm" >
+      <tr>
+        <span class='component-title'>[Lines]</span>
+        <a routerLink='/purchaserequestlineitem/create/{{purchaserequest.Id}}'>
+            <img src='assets/add-icon.png' width='20' height='20' >
+        </a>
+      </tr>
+      <tr>
+        <th>ID:</th>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Line Total</th>
+        <th>Action</th>
+      </tr>
+      <tr *ngFor='let prli of lines' >
+        <td>{{prli.Id}}</td>
+        <td *ngIf='prli.Product'>{{prli.Product.Name}}</td>
+        <td>{{prli.Quantity}}</td>
+        <td *ngIf='prli.Product'>{{prli.Product.Price}}</td>
+        <td *ngIf='prli.Product'>{{prli.Product.Price * prli.Quantity | currency}}</td>
+        <td>
+          <a routerLink='/purchaserequestlineitem/create/{{purchaserequest.Id}}' class='btn btn-primary' title='Edit'>Add</a>
+          <a routerLink='/purchaserequest/linedel/{{purchaserequest.Id}}/{{prli.Id}}' class='btn btn-danger' title='Edit' (click)="remove()">Remove</a>                                         
+      </tr>
+    </table>
+  </div>
+</div>

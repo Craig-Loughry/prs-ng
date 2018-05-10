@@ -1,0 +1,36 @@
+<app-menu></app-menu>
+ <div class= 'component-content'>
+  <div class= 'lefthalf'>
+  <span class='component-title'> [{{title}}] </span>
+  <span><a routerLink='/purchaserequest/create'>
+    <img id='createnew' width='20' height='20' src='assets/add-icon.png' title='Add New'></a></span>
+    </div>
+</div>
+  <p *ngIf='!purchaserequests'> Loading....</p>
+   <table class="table table-striped table-lg" *ngIf='purchaserequests'>
+    <tr style="font-weight:bold">
+    <td>Id</td>
+    <td>User</td>
+    <td>Description</td>
+    <td>Justification</td>
+    <td>Date Needed By</td>
+    <td>Delivery Mode</td>
+    <td>Status</td>
+    <td>Total</td>
+    <td>Date of Submission</td>
+    <td>Reason For Rejection</td>
+    </tr>
+    <tr *ngFor= "let pr of purchaserequests">
+     <td>{{pr.Id}}</td><td>{{pr.User.UserName}}</td><td>{{pr.Description}}</td><td>{{pr.Justification}}</td><td>{{pr.DateNeeded}}</td>
+    <td>{{pr.DeliveryMode}}</td><td>{{pr.Status}}</td><td>{{pr.Total}}</td><td>{{pr.SubmittedDate}}</td><td>{{pr.ReasonForRejection}}</td>
+
+    <td class="actions">
+        <a routerLink='/purchaserequest/detail/{{pr.Id}}'><img src='assets/details.png' width='20' height='20' title='Detail'></a>
+        <a routerLink='/purchaserequest/edit/{{pr.Id}}'><img src='assets/pencil-icon.png' width='20' height='20' title='Edit'>
+        <a routerLink='/purchaserequest/lines/{{pr.Id}}'><img src='assets/lines.png'  width='20' height='20' title='Edit'></a>
+
+        </a>
+    </td>
+    </tr>
+</table>
+<p *ngIf='!purchaserequests'> Loading....</p>
