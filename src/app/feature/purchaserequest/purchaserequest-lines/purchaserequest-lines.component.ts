@@ -53,4 +53,11 @@ remove() {
       this.ngOnInit();
     });
       }
+  submitForReview() {
+    this.purchaserequestSvc.submitForReview(this.purchaserequest)
+      .subscribe(resp => {
+        this.resp = resp;
+        this.router.navigate(['/purchaserequest/list']);
+      });
+  }
 }

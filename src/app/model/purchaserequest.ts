@@ -1,6 +1,9 @@
+import { User } from '../model/user';
+
 export class PurchaseRequest {
         Id: number;
-		User: string;
+		User: User;
+        UserName: string;
 		Description: string;
 		Justification: string;
 		DateNeeded: Date;
@@ -14,10 +17,10 @@ export class PurchaseRequest {
         return "User = "+this.User+", Description = "+this.Description+", Status = "+this.Status; 
     }
     
-    constructor(inId = 0, User: string = '', Dsc: string = '', jst: string = '', dN: Date, dMo: string = '', st: string, ttl: number = 0, sD: Date, rFR: string = '') {
+    constructor(inId = 0, U = null, Dsc: string = '', jst: string = '', dN: Date, dMo: string = '', st: string, ttl: number = 0, sD: Date, rFR: string = '') {
         
         this.Id = inId;
- 		this.User = User;
+ 		this.User = U;
 		this.Description = Dsc;
 		this.Justification = jst;
 		this.DateNeeded = dN;

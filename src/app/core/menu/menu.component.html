@@ -1,8 +1,16 @@
 <nav class="navbar">
-    <ul>
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a id='brand' class="navbar-brand" href="#">MAX Global
+      <i class="fab fa-empire"></i>
+      </a>
+    </div>
         <li *ngFor = 'let menu of menuItems'
            title='{{menu.tooltip}}'>
            <a routerLink='{{menu.href}}'>{{menu.display}}</a>
         </li>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Welcome, {{user.UserName}}!</a></li>
     </ul>
+  </div>
 </nav>

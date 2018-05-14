@@ -51,7 +51,7 @@ const routes: Routes = [
     {path:'purchaserequest/detail/:id', component: PurchaseRequestDetailComponent},
     {path:'purchaserequest/edit/:id', component: PurchaseRequestEditComponent},
     {path:'purchaserequest/remove/:id', component: PurchaseRequestEditComponent},
-    {path:'purchaserequest/review', component: PurchaseRequestReviewComponent},
+    {path:'purchaserequest/review/:id', component: PurchaseRequestReviewComponent},
     {path:'purchaserequest/approve/:id', component: PurchaseRequestApproveComponent},
     {path:'purchaserequest/lines/:id', component: PurchaseRequestLinesComponent},
     {path:'purchaserequest/linedel/:id/:del', component: PurchaseRequestLinesComponent},

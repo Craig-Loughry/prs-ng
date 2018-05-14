@@ -1,3 +1,27 @@
-<p>
-  purchaserequest-review works!
-</p>
+<app-menu></app-menu>
+<div class = 'contentBox'>
+	<div class = 'Box'>
+		<div class = "lefthalf">
+		</div>
+		<div class='scrollbox'>
+			<p *ngIf= '!request'>Loading...</p>
+				<table class = "table table-sm" *ngIf='request'>
+					<tr>
+						<th><a (click)="setSortBy('UserName')" data-toggle="tooltip" title="Sort By User Name">User Name</a></th> 
+						<th><a (click)="setSortBy('Description')" data-toggle="tooltip" title="Sort By Description">Description</a></th> 
+						<th><a (click)="setSortBy('DateNeeded')" data-toggle="tooltip" title="Sort By Date Needed">Date Needed</a></th>
+						<th>Go To Approval</th> 
+					</tr>
+					<tr *ngFor = 'let pr of request | sort:sortBy'>
+						<td>{{pr.User.UserName}}</td>
+						<td>{{pr.Description}}</td>
+						<td>{{pr.DateNeeded}}</td>
+						<td class = 'actions'>
+							<a *ngIf='user.Reviewer == true' routerLink='/purchaserequest/approve/{{pr.Id}}' class='btn btn-primary' title='Approval Page'><img src='assets/review.png'></a>	
+							<a *ngIf='user.Reviewer == false' class="btn btn-dark" title='You Are Not Authorized for Reviews'><img src='assets/review.png'></a>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>

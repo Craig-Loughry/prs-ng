@@ -13,7 +13,7 @@ import { SystemService } from '../../../service/system.service';
 })
 export class PurchaseRequestListComponent implements OnInit {
     
-purchaserequests: PurchaseRequest[];
+purchaserequests: PurchaseRequest[] = [];
 title: string = "Purchaserequest List";
 user: User;
 
@@ -23,23 +23,20 @@ constructor(private purchaserequestSvc: PurchaseRequestService,
             ) { }
 
   ngOnInit() {
-    console.log('Getting list of prs...');
-    this.purchaserequestSvc.list().subscribe(purchaserequests => {
-        this.purchaserequests = purchaserequests;
-        console.log(purchaserequests);
-    });
-    // mock login - hardcoded for now for testing purposes
-    console.log("mock login");
-    this.userSvc.login("cloughry", "hello")
-      .subscribe(users => {
-        console.log("a",users.length);
-        if(users.length > 0) {
-			this.user = users[0];
-            this.sysSvc.data.user.instance = this.user;
-            this.sysSvc.data.user.loggedIn = true;
-            console.log("SysSvc:", this.sysSvc.debug);
-            
-        }
-    })
+   this.purchaserequestSvc.list().subscribe(prs => {
+        	this.purchaserequests = prs;
+			this.populateUserName();
+    	});
+	  
+		if(this.sysSvc.data.user.loggedIn){
+			this.user = this.sysSvc.data.user.instance;
+		}else{
+			console.error("User not logged in.");
+		}
   }
+    populateUserName(): void {
+    for (let pr of this.purchaserequests) {
+        pr.UserName = pr.User.UserName;
+    	}
+	}
 }

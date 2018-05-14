@@ -1,36 +1,39 @@
 <app-menu></app-menu>
  <div class= 'component-content'>
   <div class= 'lefthalf'>
-  <span class='component-title'> [{{title}}] </span>
-  <span><a routerLink='/purchaserequest/create'>
-    <img id='createnew' width='20' height='20' src='assets/add-icon.png' title='Add New'></a></span>
+  <span class='component-title'></span>
+      <header>
+  <span>
+   <button button type="button" class="btn btn-success btn btn-lg" routerLink='/purchaserequest/create'>Create New Purchase Request</button>
+</span>
+   </header>
     </div>
 </div>
   <p *ngIf='!purchaserequests'> Loading....</p>
-   <table class="table table-striped table-lg" *ngIf='purchaserequests'>
+   <table class="table table-lg" *ngIf='purchaserequests'>
     <tr style="font-weight:bold">
-    <td>Id</td>
-    <td>User</td>
-    <td>Description</td>
-    <td>Justification</td>
-    <td>Date Needed By</td>
-    <td>Delivery Mode</td>
-    <td>Status</td>
-    <td>Total</td>
-    <td>Date of Submission</td>
-    <td>Reason For Rejection</td>
+    <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold" (click)="setSortBy('Id')">Id</a></th>
+    <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold" (click)="setSortBy('User')">User</a></th>
+    <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold" (click)="setSortBy('Description')">Description</a></th>
+    <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold" (click)="setSortBy('Justification')">Justification</a></th>
+    <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold" (click)="setSortBy('DateNeeded')">Date Needed By</a></th>
+    <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold" (click)="setSortBy('DeliveryMode')">Delivery Mode</a></th>
+    <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold" (click)="setSortBy('Status')">Status</a></th>
+    <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold" (click)="setSortBy('Total')">Total</a></th>
+    <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold" (click)="setSortBy('SubmittedDate')">Date of Submission</a></th>
+    <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold" (click)="setSortBy('ReasonForRejection')">Reason For Rejection</a></th>
+        <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold" (click)="setSortBy('Action')">Action</a></th>
     </tr>
     <tr *ngFor= "let pr of purchaserequests">
      <td>{{pr.Id}}</td><td>{{pr.User.UserName}}</td><td>{{pr.Description}}</td><td>{{pr.Justification}}</td><td>{{pr.DateNeeded}}</td>
     <td>{{pr.DeliveryMode}}</td><td>{{pr.Status}}</td><td>{{pr.Total}}</td><td>{{pr.SubmittedDate}}</td><td>{{pr.ReasonForRejection}}</td>
 
-    <td class="actions">
+    <th class="actions">
         <a routerLink='/purchaserequest/detail/{{pr.Id}}'><img src='assets/details.png' width='20' height='20' title='Detail'></a>
         <a routerLink='/purchaserequest/edit/{{pr.Id}}'><img src='assets/pencil-icon.png' width='20' height='20' title='Edit'>
         <a routerLink='/purchaserequest/lines/{{pr.Id}}'><img src='assets/lines.png'  width='20' height='20' title='Edit'></a>
-
         </a>
-    </td>
+    </th>
     </tr>
 </table>
 <p *ngIf='!purchaserequests'> Loading....</p>

@@ -29,18 +29,20 @@ change(purchaserequest: PurchaseRequest): Observable<any> {
     Observable<any>;
     }
 submitForReview(purchaserequest: PurchaseRequest):Observable<any> {
-    return this.http.post(url+"SubmitForReview", purchaserequest) as
+    return this.http.post(url+"Submit", purchaserequest) as
     Observable<any>;
     }
-approve(purchaserequest: PurchaseRequest):Observable<any> {
-    return this.http.post(url+"ApprovePR", purchaserequest) as
+approve(pr: PurchaseRequest):Observable<any> {
+    return this.http.post(url+"ApprovePR", pr) as
     Observable<any>;
     }
-reject(purchaserequest: PurchaseRequest):Observable<any> {
-    return this.http.post(url+"RemovePR", purchaserequest) as
+reject(pr: PurchaseRequest):Observable<any> {
+    return this.http.post(url+"RejectPR", pr) as
     Observable<any>;
     }
+listForReview(id): Observable<PurchaseRequest[]> {
+      return this.http.get(url+"GetRequestReview?id="+id + '&status=review') as Observable<PurchaseRequest[]>;
+  }
   constructor(private http: HttpClient) { }
 
 }
-

@@ -1,0 +1,28 @@
+th {
+    background-color: black;
+    color: white;
+    font-size: 17px;
+}
+table {
+    border-collapse: collapse;
+    width: 90%;
+    color: white;
+    background: #4CAF50;
+    margin-left: 5%;
+    margin-top: 5%;
+    font-size: 15px;
+    opacity: .85;
+}
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+span {
+    font-size: 35px;
+    padding-left: 50%;
+    padding: 0px
+}
+header {
+    padding-left: 42%;
+    margin: 0px auto;
+}

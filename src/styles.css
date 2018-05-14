@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+navbar {
+    background-color: transparent;
+    background: transparent;
+}
+  body{
+    background-image: url(assets/tree-3072431_960_720.jpg);
+    width:100%;
+    height:100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+table {
+    width: 75%;
+}

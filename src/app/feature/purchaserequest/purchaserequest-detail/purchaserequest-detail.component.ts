@@ -28,7 +28,7 @@ title: string = 'Purchaserequest Detail';
         this.update(); 
     }
      update() {
-    this.purchaserequestSvc.change(this.purchaserequest)
+    this.purchaserequestSvc.submitForReview(this.purchaserequest)
       .subscribe(resp => {
         this.resp = resp;
         console.log("Purchaserequest-Review:", this.resp);

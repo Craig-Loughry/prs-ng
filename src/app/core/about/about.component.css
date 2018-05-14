@@ -1,0 +1,27 @@
+.container {
+    background: none;
+    height: 50%;
+    width: 60%;
+}
+.jumbotron {
+    opacity: .85;
+    height: 50%;
+    width: 50%;
+    background: white;
+    margin: 0px auto;
+    
+}
+h2 {
+    font-size: 35px;
+    margin-left: 10%;
+    margin-top: 0;
+}
+img {
+    margin-left: 15%;
+}
+h3 {
+    padding-left: 30%;
+}
+button {
+    margin-left: 30%;
+}

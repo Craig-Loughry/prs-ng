@@ -1,0 +1,23 @@
+header {
+    font-size: 70px;
+    color: white;
+    align-content: center;
+    text-align: center;
+}
+.jumbotron{
+    background: none;
+    height: 85%;
+    width: 40%;
+    padding-top: 10px;
+    
+}
+.jumbotron h1 {
+    color: aliceblue;
+    text-decoration: underline;
+    text-decoration-style: solid;
+}
+.jumbotron h2 {
+    color: aliceblue;
+    font-size: 25px;
+    padding-bottom: 20px;
+}

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PurchaserequestApproveComponent } from './purchaserequest-approve.component';
+import { PurchaseRequestApproveComponent } from './purchaserequest-approve.component';
 
-describe('PurchaserequestApproveComponent', () => {
-  let component: PurchaserequestApproveComponent;
-  let fixture: ComponentFixture<PurchaserequestApproveComponent>;
+describe('PurchaseRequestApproveComponent', () => {
+  let component: PurchaseRequestApproveComponent;
+  let fixture: ComponentFixture<PurchaseRequestApproveComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PurchaserequestApproveComponent ]
+      declarations: [ PurchaseRequestApproveComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PurchaserequestApproveComponent);
+    fixture = TestBed.createComponent(PurchaseRequestApproveComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

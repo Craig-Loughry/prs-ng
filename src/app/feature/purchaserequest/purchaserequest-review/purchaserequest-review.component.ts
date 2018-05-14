@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { PurchaseRequestService } from '../../../service/purchaserequest.service';
 import { PurchaseRequest } from '../../../model/purchaserequest';
-import { PurchaseRequestLineItemService } from '../../../service/purchaserequestlineitem.service';
-import { PurchaseRequestLineItem } from '../../../model/purchaserequestlineitem';
+import { UserService } from '../../../service/user.service';
+import { User } from '../../../model/user';
+import { SystemService } from '../../../service/system.service'
+import { SortPipe } from '../../../pipe/sort.pipe';
 
 @Component({
   selector: 'app-purchaserequest-review',
@@ -11,21 +13,40 @@ import { PurchaseRequestLineItem } from '../../../model/purchaserequestlineitem'
   styleUrls: ['./purchaserequest-review.component.css']
 })
 export class PurchaseRequestReviewComponent implements OnInit {
-    title: string = 'Approve/Reject PR';
-    id: string;
-    prliId: string;
-    request: PurchaseRequest;
-    lines: PurchaseRequestLineItem [];
-    resp: any;
-    reasonForRejection: string = "";
+    title: string = 'Review PR';
+    request: PurchaseRequest[] = [];
+    sortBy: string = 'Id'
+    user: User;
+    id: number = 0;
+
     
-  constructor(private prliSvc: PurchaseRequestLineItemService,
-               private purchaserequest: PurchaseRequestService,
+  constructor(private userSvc: UserService,
+               private purchaserequestSvc: PurchaseRequestService,
+               private sysSvc: SystemService,
                private router: Router,
                private route: ActivatedRoute
               ) { }
 
   ngOnInit() {
+ 	if(this.sysSvc.data.user.loggedIn){
+		this.user = this.sysSvc.data.user.instance;
+		this.id= this.user.Id;
+	}else{
+		console.error("User not logged in.");
+	};
+	  
+	this.purchaserequestSvc.listForReview(this.id).subscribe(prs => {
+		this.request = prs;
+        console.log(prs);
+		this.populateUserName();
+	});
   }
-
+  populateUserName(): void {
+    for (let pr of this.request) {
+      pr.UserName = pr.User.UserName;
+    }
+  }
+  setSortBy(column: string): void {
+    this.sortBy = column;
+  }
 }
